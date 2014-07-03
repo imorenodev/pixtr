@@ -1,0 +1,27 @@
+<h1><%= @gallery.name %></h1>
+<p><%= @gallery.description %></p>
+
+<nav>
+<%= link_to "Edit", edit_gallery_path(@gallery) %>
+<!-- <%= link_to "Edit", "/galleries/#{@gallery.id}/edit" %> -->
+
+<%= link_to "Destroy", @gallery, method: :delete, data: { confirm: "are you sure?" } %>
+<!-- <%= link_to "Destroy", "/galleries/#{@gallery.id}", method: :delete, data: { confirm: "are you sure?" } %> -->
+
+<%= link_to "Add Image", new_gallery_image_path(@gallery) %>
+<!-- <%= link_to "Add Image", "/galleries/#{@gallery.id}/images/new" %> -->
+</nav>
+
+
+<!--THIS-->
+<%= render "images" %>
+
+<!--DOES THE SAME AS THIS-->
+<% @images.each do |image| %>
+  <!-- <%= link_to image_tag(image.url, width: 200), [@gallery, image] %> --> <!-- can instead be written as a block, see below: -->
+
+  <%= link_to [@gallery, image] do %>
+    <%= image_tag image.url, width: 200 %>
+  <% end %>
+
+<%end %>

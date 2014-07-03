@@ -1,0 +1,44 @@
+<h1>New Gallery</h1>
+
+<%= form_for(@gallery) do |form| %>
+  <%= render form %>
+  <%= form.submit "Create Gallery" %>
+<% end %>
+
+<!--
+<%= render "form" %>
+-->
+
+<!--
+<%= form_for(@gallery) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.submit "Create" %>
+<% end %>
+-->
+
+
+<!-- <form action="/galleries" method="POST">
+  <input type="hidden" name="_method" value="put">
+<div>
+  <label>Enter Gallery Name: </label>
+  <input type="text" name="gallery[name]">
+</div>
+
+<div>
+  <label>Enter Gallery Description: </label>
+  <input type="text" name="gallery[description]">
+</div>
+
+<div>
+  <input type="submit" value="Create Gallery">
+</div>
+</form> -->

@@ -1,0 +1,27 @@
+
+<h1>New Image</h1>
+
+<%= form_for([@gallery, @image]) do |form| %>
+  <%= render form %>
+  <%= form.submit "New image" %>
+<% end %>
+
+<!--
+<%= render partial: "images/form", locals: { gallery: @gallery, image: @image } %> 
+-->
+<!--
+
+<%= form_for([@gallery, @image]) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.label :url %>
+  <%= form.text_field :url %>
+
+  <%= form.submit %>
+<% end %>
+
+-->

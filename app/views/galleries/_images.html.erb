@@ -1,0 +1,8 @@
+<% @images.each do |image| %>
+  <!-- <%= link_to image_tag(image.url, width: 200), [@gallery, image] %> --> <!-- can instead be written as a block, see below: -->
+
+  <%= link_to [@gallery, image] do %>
+    <%= image_tag image.url, width: 200 %>
+  <% end %>
+
+<%end %>

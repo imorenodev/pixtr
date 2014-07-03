@@ -1,0 +1,5 @@
+<%= link_to "New Gallery", "/galleries/new" %> <!--action view helper method -->
+
+<% @galleries.each do |gallery| %>
+  <%= link_to gallery.name, "/galleries/#{gallery.id}" %>
+<% end %>

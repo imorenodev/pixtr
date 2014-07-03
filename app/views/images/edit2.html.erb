@@ -1,0 +1,34 @@
+
+<h1>Edit Image</h1>
+
+<%= form_for([@gallery, @image]) do |form| %>
+  <%= render form %>
+  <%= form.submit "Update image" %>
+<% end %>
+
+
+<!--
+<%= render "images/form", { gallery: @gallery, image: @image } %>
+-->
+
+<!-- Alternate method using partials
+<%= form_for([@gallery, @image]) do |form| %>
+  <%= render form %>
+  <%= form.submit "Update Image" %>
+<% end %>
+-->
+
+<!-- Alternate method NOT using partials
+<%= form_for([@gallery, @image]) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.label :url %>
+  <%= form.text_field :url %>
+
+  <%= form.submit "Update Image" %>
+<% end %>
+-->
