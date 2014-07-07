@@ -7,4 +7,9 @@ class SessionsController < ApplicationController
     cookies.signed[:user_id] = user.id #could user user.email or whatever 
     redirect_to galleries_path
   end
+
+  def destroy
+    cookies.delete(:user_id)
+    redirect_to galleries_path
+  end
 end

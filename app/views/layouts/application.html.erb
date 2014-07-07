@@ -8,8 +8,13 @@
 </head>
 <body>
   <div>
-    <%= link_to "Sign up", new_user_path %>
-    <%= link_to "Sign in", new_session_path %>
+    <% if signed_in? %>
+      welcome <%= current_user.email %>
+      <%= link_to "Log Out", session_path, method: :delete, data: {confirm: "Are you sure?" } %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Sign in", new_session_path %>
+    <% end %>
   </div>
 </br>
 
