@@ -18,6 +18,7 @@ class ImagesController < ApplicationController
   def show
     @gallery = find_gallery
     @image = find_image_in(@gallery)
+    @comment = Comment.new
   end
 
   def edit
@@ -56,6 +57,6 @@ class ImagesController < ApplicationController
   def image_params
     params.
       require(:image).
-      permit(:name, :description, :url)
+      permit(:name, :description, :url, group_ids: []) #the hash must go at the end
   end
 end

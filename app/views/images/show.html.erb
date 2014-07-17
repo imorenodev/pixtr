@@ -9,3 +9,35 @@
 <p><%= @image.description %></p>
 
 <%= image_tag @image.url %>
+
+<p>[Tags go here]</p>
+<% @image.tags.each do |tag| %>
+  <%= link_to tag, tag_path(tag.id) %>
+<% end %>
+
+<% if @image.likes.count > 2 && current_user.likes?(@image) %>
+  <p> You and <%= @image.likes.count - 1 %> other people like this.</p>
+<% elsif @image.likes.count == 2 && current_user.likes?(@image) %>
+  <p> You and <%= @image.likes.count - 1 %> other person likes this.</p>
+<% elsif @image.likes.count == 1 && current_user.likes?(@image) %>
+  <p> You like this.</p>
+<% elsif @image.likes.count > 1 %>
+  <p> <%= @image.likes.count %> people like this.</p>
+<% elsif @image.likes.count == 1 %>
+  <p> <%= @image.likes.count %> person likes this.</p>
+<% else %>
+  <p> This picture is as popular as JarJarBinks #nolikeswhatsoever </p>
+<% end %>
+
+<% if current_user.likes?(@image) %>
+  <%= link_to "Unlike", unlike_gallery_image_path, method: :delete %>
+<% else %>
+  <%= link_to "Like", like_gallery_image_path, method: :post %>
+<% end %>
+
+<%= render @image.comments.chronological %>
+
+<%= form_for([@gallery, @image, @comment]) do |form| %> <!-- to make a new comment we need to know info about the @gallery and @image that the @comment belongs to so they need to be passed along in an array -->
+  <%= form.text_area :content %>
+  <%= form.submit "Post" %>
+<% end %>

@@ -1,0 +1,25 @@
+<h1><%= @group.name %></h1>
+
+<p><%= @group.description %></p>
+
+<nav>
+  <ul>
+    <li>
+      <% if current_user.member?(@group) %>
+        <%= link_to "Leave Group", leave_group_path, method: :delete, data: {confirm: "Are you sure?"} %>
+      <% else %>
+        <%= link_to "Join", join_group_path(@group), method: :post %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
+
+<ul>
+  <% @group.users.each do |user| %>
+    <li><%= link_to user.email, user %></li>
+  <% end %>
+</ul>
+
+<% @group.images.each do |image| %>
+  <%= image_tag image.url %>
+<% end %>

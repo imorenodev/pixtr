@@ -10,12 +10,20 @@
   <div>
     <% if signed_in? %>
       welcome <%= current_user.email %>
+      <%= link_to "Browse Galleries", galleries_path %>      
+      <%= link_to "View Your Galleries", current_user %>
+      <%= link_to "Groups", groups_path %>
       <%= link_to "Log Out", session_path, method: :delete, data: {confirm: "Are you sure?" } %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Sign in", new_session_path %>
     <% end %>
   </div>
+
+  <% if notice %>
+  <%= notice %>
+  <% end %>
+
 </br>
 
   <%= yield %>
